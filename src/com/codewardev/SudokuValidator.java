@@ -8,10 +8,10 @@ public class SudokuValidator {
 
 	public static boolean check(int[][] sudoku) {
 		int[][] xSquare = new int[9][9];
+		int[][] hSquare = new int[9][9];
 		int[] counter = new int[9];
 		Arrays.fill(counter, 0);
-		
-		int[][] hSquare = new int[9][9];
+
  		for(int i=0; i<sudoku.length; i++) {
 			for(int j=0; j<sudoku[i].length; j++) {
 				if(sudoku[i][j] == 0) {
@@ -57,14 +57,8 @@ public class SudokuValidator {
 			}
 		}
 		
-		printGrid(xSquare);
-		printGrid(hSquare);
 		
-		if(isAllDistinct(sudoku) && isAllDistinct(xSquare) && isAllDistinct(hSquare)) {
-			return true;
-		} else {
-			return false;
-		}
+		return isAllDistinct(sudoku) && isAllDistinct(xSquare) && isAllDistinct(hSquare) ? true : false;
 	}
 
 	private static boolean isAllDistinct(int[][] grid) {
